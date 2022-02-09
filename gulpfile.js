@@ -1,5 +1,5 @@
 const {src, dest} = require('gulp')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const csso = require('gulp-csso')
 const concat = require('gulp-concat')
 const autoprefixer = require('gulp-autoprefixer')
@@ -17,10 +17,10 @@ function html(){
 }
 
 function scss() {
-    return src('src/scss/**.scss')
+    return src('src/scss/index.scss')
     .pipe(sass())
     .pipe(autoprefixer({
-        browsers: ['last 2 versions']
+        overrideBrowserslist: ['last 2 versions']
     }))
     .pipe(csso())
     .pipe(concat('index.css'))
