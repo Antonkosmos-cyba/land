@@ -1,8 +1,12 @@
 @import 'second.scss';
 
-$red: rgb(204, 85, 70);
-$grin: rgb(102, 197, 47);
+$red: rgb(252, 2, 2);
+$ping: rgb(236, 110, 173);
 
 h1 {
     color: $red;
+}
+
+body {
+    background-color: $ping;
 }

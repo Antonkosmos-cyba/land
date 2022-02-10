@@ -27,5 +27,10 @@ function scss() {
     .pipe(dest('dist'))
 }
 
+function clear() {
+    return del('dist')
+}
+
 exports.html = html
 exports.scss = scss
+exports.clear = clear
