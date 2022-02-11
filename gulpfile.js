@@ -1,4 +1,4 @@
-const {src, dest} = require('gulp')
+const {src, dest, series, watch} = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
 const csso = require('gulp-csso')
 const concat = require('gulp-concat')
@@ -12,6 +12,9 @@ function html(){
     return src('src/**.html')
     .pipe(include({
         prefix: '@@'
+    }))
+    .pipe(htmlmin({
+        collapseWhitespace: true
     }))
     .pipe(dest('dist'))
 }
@@ -31,6 +34,13 @@ function clear() {
     return del('dist')
 }
 
-exports.html = html
-exports.scss = scss
+function serve() {
+    sync.init({
+        server: './dist'
+    })
+    watch('src/**/**.html', series(html)).on('change', sync.reload)
+    watch('src/scss/**.scss', series(scss)).on('change', sync.reload)
+}
+exports.build = series(clear, scss, html)
+exports.serve = series(clear, scss, html, serve)
 exports.clear = clear
