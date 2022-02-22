@@ -1,5 +1,7 @@
 $grin: rgb(110, 221, 66);
 
+$eio: rgb(20, 151, 202);
+
 @mixin clear-list {
     list-style: none;
     margin: 0;
@@ -11,4 +13,18 @@ ul {
     // display: flex;
     color: $grin;
     font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+a {
+    font-size: 2rem;
+    color: $grin;
+    margin-left: 10rem;
+    text-align: center;
+    border: 10px inset $eio;
+    text-decoration: none;
+
+    &:hover {
+        color: $eio;
+    }
 }
