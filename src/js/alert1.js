@@ -1,0 +1,1 @@
+alert("ANTON i MAMA i PAPA");
